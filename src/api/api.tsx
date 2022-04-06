@@ -16,7 +16,7 @@ type ProductListType = {
   data: ProductDataType;
 }
 
-type ProductDataType = {
+export type ProductDataType = {
   products: ProductsType[];
   creators: CreatedByType[];
   sortedProducts: ProductsType[];
