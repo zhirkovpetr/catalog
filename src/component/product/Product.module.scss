@@ -1,0 +1,132 @@
+.itemBlock {
+  position: relative;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 5px 7px 0 #a4a4a6f7;
+  margin-bottom: 32px;
+
+  @media only screen and (min-width: 1600px) and (max-width: 1920px) {
+    width: 310px;
+  }
+
+  @media only screen and (min-width: 1280px) and (max-width: 1600px) {
+    width: calc(20.33333vw - 14.33333px);
+  }
+
+  @media only screen and (min-width: 1024px) and (max-width: 1280px) {
+    width: 275px;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    width: calc(26.75vw - 5.5px);
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    width: 195px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 85vw;
+  }
+
+  .itemBlock__cover {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    margin-left: 10px;
+    display: block;
+    flex-direction: column;
+
+    @media only screen and (min-width: 1600px) and (max-width: 1920px) {
+      height: 585px;
+    }
+
+    @media only screen and (min-width: 1280px) and (max-width: 1600px) {
+      height: calc(27.65116vw - 29.4186px);
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1280px) {
+      height: 390px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      height: calc(39.78488vw - 18.31395px);
+    }
+
+    @media only screen and (min-width: 480px) and (max-width: 768px) {
+      height: 310px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      height: 113.18605vw;
+    }
+
+    .text {
+      font-size: 12px;
+      font-weight: 400;
+      text-align: left;
+      color: #F3F3F3;
+    }
+
+    .textAuthor {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+  }
+
+  .itemBlock__itemName {
+    position: absolute;
+    bottom: 60px;
+    color: rgba(243, 243, 243, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    display: block;
+    flex-direction: column;
+    margin: 10px;
+    font-family: 'Open Sans', serif;
+    align-items: center;
+    left: 0;
+    .itemName__text {
+      display: flex;
+      float: left;
+    }
+  }
+
+  .card__img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 423px;
+  }
+
+  .itemBlock__information {
+    display: flex;
+    margin: 10px 16px;
+    font-size: 14px;
+
+    .text {
+      font-size: 10px;
+      color: grey;
+      margin-bottom: 3px;
+    }
+
+    .quantity {
+      font-weight: 600;
+    }
+
+    .price {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .priceETH {
+      font-weight: 600;
+      color: #114DE6FF;
+    }
+
+    .itemBlock__price {
+      margin-left: auto;
+    }
+  }
+}
