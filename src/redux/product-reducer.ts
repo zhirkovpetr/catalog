@@ -1,5 +1,4 @@
 import {ProductDataType, productListAPI} from "../api/api";
-import {Dispatch} from "redux";
 import {AppStateType, AppThunkType} from "./redux-store";
 import {ThunkDispatch} from "redux-thunk";
 
