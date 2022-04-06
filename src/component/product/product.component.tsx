@@ -1,7 +1,8 @@
 import React from "react";
+
 import {ProductsType} from "../../api/api";
-import productImage from "../../assets/images/png/image.png"
-import style from "./Product.module.scss";
+import productImage from "../../assets/images/png/image.png";
+import style from "./product.module.scss";
 
 type ProductPropsType = {
   item: ProductsType;
@@ -13,7 +14,7 @@ const Product = React.memo(function Product(props: ProductPropsType) {
       <div className={style.itemBlock}>
         <div className={style.itemBlock__cover}>
           <div className={style.text}>created by</div>
-          <div className={style.textAuthor}>{item.created_by.display_name}</div>
+          <div className={style.textAuthor}>{(item.created_by.display_name).trim()}</div>
         </div>
         <div className={style.itemBlock__itemName}>
           <div>Digital Addiction</div>

@@ -1,11 +1,9 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
-import thunk, {ThunkAction} from 'redux-thunk'
+import thunk, {ThunkAction} from 'redux-thunk';
+
 import {ProductActionsTypes, productReducer} from "./product-reducer";
 
-
-
 export type AppStateType = ReturnType<typeof rootReducer>
-export type storeType= typeof store;
 
 let rootReducer= combineReducers({
     productPage: productReducer,

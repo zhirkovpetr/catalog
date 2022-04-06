@@ -1,10 +1,12 @@
+import {ThunkDispatch} from "redux-thunk";
+
 import {ProductDataType, productListAPI} from "../api/api";
 import {AppStateType, AppThunkType} from "./redux-store";
-import {ThunkDispatch} from "redux-thunk";
 
 //Const
 const GET_PRODUCT = 'GET_PRODUCT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const SORT_PRODUCT = 'SORT_PRODUCT';
 
 //State
 const initialState = {
@@ -13,7 +15,7 @@ const initialState = {
     creators: [],
     sortedProducts: [],
   } as ProductDataType,
-  isFetching: false,
+  isFetching: false as boolean,
 }
 
 //Reducer
@@ -30,6 +32,15 @@ export const productReducer = (state: InitialStateType = initialState, action: P
         ...state, isFetching: action.isFetching
       }
     }
+    case SORT_PRODUCT: {
+      return {
+        ...state,
+        productData: {
+          ...state.productData,
+          sortedProducts: [...state.productData.products.filter(item => item.quantity_available > 0)],
+        }
+      }
+    }
     default:
       return state;
   }
@@ -38,19 +49,26 @@ export const productReducer = (state: InitialStateType = initialState, action: P
 //Action type
 type getProductAT = ReturnType<typeof getProductAC>
 type toggleIsFetchingAT = ReturnType<typeof toggleIsFetchingAC>
+type sortProductAT = ReturnType<typeof sortProductAC>
 
-export type ProductActionsTypes = getProductAT | toggleIsFetchingAT;
+export type ProductActionsTypes = getProductAT | toggleIsFetchingAT | sortProductAT;
 
 //Action creator
 export const getProductAC = (data: ProductDataType) => {
   return {
-    type: GET_PRODUCT, data
+    type: GET_PRODUCT, data,
+  } as const
+}
+
+export const sortProductAC = () => {
+  return {
+    type: SORT_PRODUCT,
   } as const
 }
 
 export const toggleIsFetchingAC = (isFetching: boolean) => {
   return {
-    type: TOGGLE_IS_FETCHING, isFetching
+    type: TOGGLE_IS_FETCHING, isFetching,
   } as const
 }
 
@@ -60,7 +78,8 @@ export const getProductTC = (): AppThunkType => {
     dispatch(toggleIsFetchingAC(true));
     const response= await productListAPI.getProductList()
     dispatch(toggleIsFetchingAC(false));
-    dispatch(getProductAC(response.data.data))
+    dispatch(getProductAC(response.data.data));
+    dispatch(sortProductAC());
   }
 }
 
